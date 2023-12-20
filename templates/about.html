@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #a{
+            background-image:url({% static "pro_img/logo1.png" %})
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+  <div class="relative bg-cover bg-center bg-fixed py-20" id="a">
+    <div class="absolute inset-0 bg-green-900 opacity-75"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+          About Us
+        </h2>
+        <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-300 sm:mt-4">
+          We are a catering service committed to providing delicious food for all occasions.
+        </p>
+      </div>
+      <div class="mt-12">
+        <div class="max-w-lg mx-auto bg-white rounded-lg shadow-lg overflow-hidden lg:max-w-none">
+          <div class="px-4 bg-blue-600 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Our Story
+            </h3>
+            <p class="mt-1 max-w-2xl text-sm text-white">
+              Our catering service was founded in 2010 by Chef Jebon tarul luwis, who has over 20 years of experience in the culinary industry. He wanted to create a catering service that would provide top-notch food and service for all types of events, from small gatherings to large weddings and corporate events.
+            </p>
+          </div>
+          <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+            <dl class="sm:divide-y sm:divide-gray-200">
+              <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
+                <dt class="text-sm font-medium text-gray-500">
+                  Mission
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  Our mission is to make every event special and memorable by serving high-quality food and exceptional service. We believe that food brings people together, and we want to be a part of your celebrations.
+                </dd>
+              </div>
+              <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
+                <dt class="text-sm font-medium text-gray-500">
+                  Team
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  Today, our team consists of talented chefs, servers, and event planners who are dedicated to making every event a success. We have served thousands of clients over the years, and we continue to grow and expand our services.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

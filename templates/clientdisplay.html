@@ -1,0 +1,298 @@
+
+{% load compress %}
+{% load static %}
+{% compress css %}
+<link rel="stylesheet" href="{% static 'src/output.css' %}">
+{% endcompress %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"  rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+<body style="width: 100%;" class="bg-orange-100">
+  
+
+{% include 'navbar.html' %}
+
+<form method="get">  
+  {% csrf_token %}
+<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 relative">
+  <div class="inline-flex rounded-md shadow-sm" role="group">
+    
+    <button type="submit" value="SouthIndian" name="SouthIndian" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+    SOUTH INDIAN
+  </button>
+    <button type="submit" value="NorthIndian"  name="NorthIndian" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+    NORTH INDIAN
+    </button>
+    <button type="submit" value="Chinese" name="Chinese" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+    CHINESE
+    </button>
+    <button type="submit" value="beverages" name="beverages" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+    BEVERAGES
+    </button>
+    <!-- <div class="m-1">
+    <label class="relative inline-flex items-center mr-5 cursor-pointer">
+      <input type="submit"  class="sr-only peer" id="myCheckbox" value="veg" name="veg" checked>
+      <input type="submit"  class="sr-only peer" id="myCheckbox" value="veg" name="veg" checked>
+      <span class="ml-3 text-sm font-medium text-red-900 dark:text-gray-300">NON VEG</span>
+      <div class="w-11 h-6 bg-red-500 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[34px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+      <span class="ml-3 text-sm font-medium text-green-900 dark:text-gray-300">VEG</span>
+  </label>
+</div> -->
+{% if  type1_cussin == "SouthIndian" or type1_cussin == "NorthIndian" or type1_cussin == "Chinese" %} 
+<!-- <div class="flex md:flex-wrap md:flex-row absolute left-0 top-full md:relative "> -->
+  <div class="flex items-center mr-4">
+      <button type="submit" name="veg" value="nonveg"><input id="red-radio" type="radio" value="" name="colored-radio" class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"  {% if type2_v_n == "nonveg" %} checked {% endif %}>
+      <label for="red-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">nonveg</label>
+  </button>
+  </div>
+  <div class="flex items-center mr-4">
+    <button type="submit" name="veg" value="veg">
+      <input id="green-radio" type="radio" value="" name="colored-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {% if type2_v_n == "veg" %} checked {% endif %}>
+      <label for="green-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">veg</label>
+    </button>
+    </div>
+    {% endif %}
+    {% if   type1_cussin == "beverages" %}
+    <div class="flex items-center mr-4">
+      <button type="submit" name="Alcoholic" value="Alcoholic"><input id="red-radio" type="radio" value="Alcoholic" name="colored-radio" class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"  {% if type2_v_n == "Alcoholic" %} checked {% endif %}>
+      <label for="red-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Alcoholic</label>
+  </button>
+  </div>
+  <div class="flex items-center mr-4">
+    <button type="submit" name="Alcoholic" value="NonALcoholic">
+      <input id="green-radio" type="radio" value="NonALcoholic" name="colored-radio" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" {% if type2_v_n == "NonALcoholic" %} checked {% endif %}>
+      <label for="green-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">NonALcoholic</label>
+    </button>
+    </div>
+</div>
+{% endif %}
+  <!-- <button type="submit" name ="result" value="result" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+    SHOW RESULTS
+    <svg aria-hidden="true" class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+</button> --> 
+  </div>
+</nav>
+
+{% if type1_cussin in cussin %}
+
+   {% if  type1_cussin == "SouthIndian" or type1_cussin == "NorthIndian" or type1_cussin == "Chinese" %} 
+   <button data-collapse-toggle="type3" type="button" class="block relative top-16 left-7 items-center px-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="type3" aria-expanded="false">
+    <span class="sr-only">Open main menu</span>
+    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+  </button>
+    <ul id="type3" class=" w-48 hidden mx-16 -mt-9  relative top-14 left-11 md:block text-sm font-medium text-gray-900 bg-orange-500 border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white md:absolute md:top-36 md:left-7 md:mx-0 md:mt-0">
+      
+      <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+        <button type="submit" name="type3_course" value="BreakFast"> 
+            <div class="flex items-center pl-3">
+                <input id="list-radio-license" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" name="radio" value="BreakFast" {% if type3_course == "BreakFast" %} checked {% endif %}>
+                <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >BreakFast</label>
+            </div>
+            <button type="submit" name="type3_course" value="BreakFast"> 
+        </li>
+      </button> 
+     
+        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="Starters">  
+          <div class="flex items-center pl-3">
+                <input id="list-radio-id" type="radio" {% if type3_course == "Starters" %} checked {% endif %} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" name="radio" value="Starters">
+                <label for="list-radio-id" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >Starters</label>
+            </div>
+          </button>
+        </li>
+      
+        {% if type1_cussin == "SouthIndian" or  type1_cussin == "NorthIndian" %}
+        
+        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="MainCourse">
+            <div class="flex items-center pl-3">
+                <input id="list-radio-millitary" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"  name="radio" value="MainCourse" {% if type3_course == "MainCourse" %} checked {% endif %}>
+                <label for="list-radio-millitary" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">MainCourse</label>
+            </div>
+          </button>
+        </li>
+      
+        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="Dessert">
+          <div class="flex items-center pl-3">
+              <input id="list-radio-passport" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" name="radio" value="Dessert"  {% if type3_course == "Dessert" %} checked {% endif %}>
+              <label for="list-radio-passport" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >Dessert</label>
+          </div>
+        </button>
+      </li>
+      {% endif %}
+    </ul>
+    {% endif %}
+    {% endif %}
+    {% if type1_cussin == "beverages" %}
+    {% if type2_v_n == "Alcoholic" %} 
+    <button data-collapse-toggle="type3" type="button" class="block relative top-16 left-7 items-center px-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="type3" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+    </button>
+      <ul  id="type3" class=" w-48 hidden mx-16 -mt-9  relative top-14 left-11 md:block text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white md:absolute md:top-36 md:left-7 md:mx-0 md:mt-0">    
+        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="Beer"> 
+              <div class="flex items-center pl-3">
+                  <input id="list-radio-Beer" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" name="radio" value="Beer" {% if type3_course == "Beer" %} checked {% endif %}>
+                  <label for="list-radio-Beer" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >Beer</label>
+              </div>
+          </button>
+          </li>
+          <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+            <button type="submit" name="type3_course" value="Wine">
+            <div class="flex items-center pl-3">
+                <input id="list-radio-Wine" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" name="radio" value="Wine"  {% if type3_course == "Wine" %} checked {% endif %}>
+                <label for="list-radio-Wine" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" >Wine</label>
+            </div>
+          </button>
+        </li>
+          <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="Vodka">
+            <div class="flex items-center pl-3">
+                <input id="list-radio-Vodka" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"  name="radio" value="Vodka" {% if type3_course == "Vodka" %} checked {% endif %}>
+                <label for="list-radio-Vodka" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Vodka</label>
+            </div>
+          </button>
+        </li>         
+          <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="Rum">
+            <div class="flex items-center pl-3">
+                <input id="list-radio-Rum" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"  name="radio" value="Rum" {% if type3_course == "Rum" %} checked {% endif %}>
+                <label for="list-radio-Rum" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Rum</label>
+            </div>
+          </button>
+        </li>
+<li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="Whisky">
+            <div class="flex items-center pl-3">
+                <input id="list-radio-Whisky" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"  name="radio" value="Whisky" {% if type3_course == "Whisky" %} checked {% endif %}>
+                <label for="list-radio-Whisky" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Whisky</label>
+            </div>
+          </button>
+        </li>
+<li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="Tequila">
+            <div class="flex items-center pl-3">
+                <input id="list-radio-Tequila" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"  name="radio" value="Tequila" {% if type3_course == "Tequila" %} checked {% endif %}>
+                <label for="list-radio-Tequila" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tequila</label>
+            </div>
+          </button>
+        </li> 
+      </ul>
+{% elif type2_v_n == "NonALcoholic" %}   
+<button data-collapse-toggle="type3" type="button" class="block relative top-16 left-7 items-center px-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="type3" aria-expanded="false">
+  <span class="sr-only">Open main menu</span>
+  <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+</button>  
+  <ul id="type3" class=" w-48 hidden mx-16 -mt-9  relative top-14 left-11 md:block text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white md:absolute md:top-36 md:left-7 md:mx-0 md:mt-0">
+<li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="Tea">
+            <div class="flex items-center pl-3">
+                <input id="list-radio-Tea" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"  name="radio" value="Tea" {% if type3_course == "Tea" %} checked {% endif %}>
+                <label for="list-radio-Tea" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tea</label>
+            </div>
+          </button>
+        </li>
+<li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="Coffee">
+            <div class="flex items-center pl-3">
+                <input id="list-radio-Coffee" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"  name="radio" value="Coffee" {% if type3_course == "Coffee" %} checked {% endif %}>
+                <label for="list-radio-Coffee" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Coffee</label>
+            </div>
+          </button>
+        </li>
+<li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="FruitJuice">
+            <div class="flex items-center pl-3">
+                <input id="list-radio-FruitJuice" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"  name="radio" value="FruitJuice" {% if type3_course == "FruitJuice" %} checked {% endif %}>
+                <label for="list-radio-FruitJuice" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">FruitJuice</label>
+            </div>
+          </button>
+        </li>
+        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="SoftDrinks">
+            <div class="flex items-center pl-3">
+                <input id="list-radio-SoftDrinks" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"  name="radio" value="SoftDrinks" {% if type3_course == "SoftDrinks" %} checked {% endif %}>
+                <label for="list-radio-SoftDrinks" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">SoftDrinks</label>
+            </div>
+          </button>
+        </li>          
+        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <button type="submit" name="type3_course" value="MilkShake">
+            <div class="flex items-center pl-3">
+                <input id="list-radio-MilkShake" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"  name="radio" value="MilkShake" {% if type3_course == "MilkShake" %} checked {% endif %}>
+                <label for="list-radio-MilkShake" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">MilkShake</label>
+            </div>
+          </button>
+        </li> 
+      </ul>
+    </div>           
+      {% endif %}
+    {% endif %}
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <div id="alert-border-2" class="flex p-4 mb-4 ml-10 mr-10 relative text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
+        <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+        <div class="ml-3 text-sm font-medium">
+        {{message}} 
+        </div>
+        <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-2" aria-label="Close">
+          <span class="sr-only">Dismiss</span>
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+    </div>
+    {% endif %}
+    {% if message.tags == 'success' %}
+    <div id="alert-border-3" class="flex p-4 mb-4 ml-10 mr-10 relative text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800" role="alert">
+        <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+        <div class="ml-3 text-sm font-medium">
+        {{message}}
+        </div>
+        <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-3" aria-label="Close">
+          <span class="sr-only">Dismiss</span>
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+    </div>
+    {% endif %}
+    {% endfor%}  
+{% include 'cussin.html' %}
+
+{% for i in item1 %}
+<div id="{{i.item_name}}" class="w-44 max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-400" role="alert">
+  <div class="flex">
+      <img class="w-8 h-8 rounded-full shadow-lg" src="{{i.image_field.url}}" alt="Jese Leos image"/>
+      <div class="ml-3 text-sm font-normal">
+          <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white">{{i.item_name}}</span>
+          
+      <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#{{i.item_name}}" aria-label="Close">
+          <span class="sr-only">Close</span>
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+      </button>
+  </div>
+</div>
+{% endfor %}
+{% for i in bev1 %}
+<div id="{{i.item_name}}" class="w-44 max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-400" role="alert">
+  <div class="flex">
+      <img class="w-8 h-8 rounded-full shadow-lg" src="{{i.image_field.url}}" alt="Jese Leos image"/>
+      <div class="ml-3 text-sm font-normal">
+          <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white">{{i.item_name}}</span>
+          
+      <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#{{i.item_name}}" aria-label="Close">
+          <span class="sr-only">Close</span>
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+      </button>
+  </div>
+</div>
+{% endfor %}
+</div>
+</form> 
+  
+</body>
+
+
+    

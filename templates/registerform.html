@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text"     name="use"      placeholder="username">
+            <input type="password" name="pass" placeholder="password">
+            <input type="email"    name="email"   placeholder="email">
+            <input type="number"   name="phone"  placeholder="phone">
+            <p>{{err}}</p>
+            <input type="submit" value="submit">
+        </form>
+    </body>
+</html>
